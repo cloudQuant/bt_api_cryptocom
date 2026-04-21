@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bt_api_cryptocom"
+version = "0.1.0"
+description = "Crypto.com exchange plugin for bt_api"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "cloudQuant", email = "yunjinqi@gmail.com" }]
+keywords = ["bt_api", "cryptocom", "exchange", "trading"]
+classifiers = ["License :: OSI Approved :: MIT License"]
+dependencies = ["bt_api_base>=0.1.0"]
+
+[project.urls]
+Homepage = "https://github.com/cloudQuant/bt_api"
+Documentation = "https://cloudquant.github.io/bt_api/"
+
+[tool.hatch.build.targets.sdist]
+include = ["src/"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bt_api_cryptocom"]
