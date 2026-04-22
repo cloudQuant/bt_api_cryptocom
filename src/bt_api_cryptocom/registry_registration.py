@@ -2,10 +2,13 @@ from __future__ import annotations
 
 from typing import Any
 
-from bt_api_base.balance_utils import nested_balance_handler as _cryptocom_balance_handler
+from bt_api_base.balance_utils import (
+    nested_balance_handler as _cryptocom_balance_handler,
+)
+from bt_api_base.registry import ExchangeRegistry
+
 from bt_api_cryptocom.exchange_data import CryptoComExchangeDataSpot
 from bt_api_cryptocom.feeds.live_cryptocom.spot import CryptoComRequestDataSpot
-from bt_api_base.registry import ExchangeRegistry
 
 
 def _cryptocom_spot_subscribe_handler(

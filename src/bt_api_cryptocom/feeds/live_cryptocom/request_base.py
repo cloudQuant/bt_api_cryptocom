@@ -13,9 +13,9 @@ from bt_api_base.feeds.feed import Feed
 from bt_api_base.functions.utils import update_extra_data
 from bt_api_base.logging_factory import get_logger
 
-from bt_api_cryptocom.exchange_data import CryptoComExchangeDataSpot
 from bt_api_cryptocom.containers.orderbooks import CryptoComOrderBook
 from bt_api_cryptocom.containers.orders import CryptoComOrder
+from bt_api_cryptocom.exchange_data import CryptoComExchangeDataSpot
 from bt_api_cryptocom.tickers import CryptoComTicker
 
 

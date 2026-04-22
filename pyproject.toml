@@ -23,3 +23,13 @@ include = ["src/"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/bt_api_cryptocom"]
+
+[tool.ruff]
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["I", "UP", "E", "F", "W"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["bt_api_cryptocom"]

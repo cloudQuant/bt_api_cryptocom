@@ -5,7 +5,7 @@ import time
 from typing import Any
 
 from bt_api_base.containers.tickers.ticker import TickerData
-from bt_api_base.functions.utils import from_dict_get_float, from_dict_get_string
+from bt_api_base.functions.utils import from_dict_get_float
 
 
 class CryptoComTicker(TickerData):
@@ -36,7 +36,7 @@ class CryptoComTicker(TickerData):
         self.all_data: dict[str, Any] | None = None
         self.has_been_init_data = False
 
-    def init_data(self) -> "CryptoComTicker":
+    def init_data(self) -> CryptoComTicker:
         if not self.has_been_json_encoded:
             self.ticker_data = (
                 json.loads(self.ticker_info)

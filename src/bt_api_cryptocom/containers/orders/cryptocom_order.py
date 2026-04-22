@@ -33,7 +33,7 @@ class CryptoComOrder(OrderData):
         self.all_data: dict[str, Any] | None = None
         self.has_been_init_data = False
 
-    def init_data(self) -> "CryptoComOrder":
+    def init_data(self) -> CryptoComOrder:
         if not self.has_been_json_encoded:
             self.order_data = (
                 json.loads(self.order_info) if isinstance(self.order_info, str) else self.order_info

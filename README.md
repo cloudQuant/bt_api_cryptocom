@@ -40,13 +40,18 @@ pip install -e .
 ### Quick Start
 
 ```python
-from bt_api_cryptocom import CryptocomApi
+from bt_api import BtApi
 
-# Initialize
-feed = CryptocomApi(api_key="your_key", secret="your_secret")
+# Initialize with exchange credentials
+api = BtApi(exchange_kwargs={
+    "CRYPTOCOM___SPOT": {
+        "api_key": "your_api_key",
+        "secret": "your_secret",
+    }
+})
 
 # Get ticker data
-ticker = feed.get_ticker("BTCUSDT")
+ticker = api.get_tick("CRYPTOCOM___SPOT", "BTCUSDT")
 print(ticker)
 ```
 
@@ -130,13 +135,18 @@ pip install -e .
 ### 快速开始
 
 ```python
-from bt_api_cryptocom import CryptocomApi
+from bt_api import BtApi
 
-# 初始化
-feed = CryptocomApi(api_key="your_key", secret="your_secret")
+# 使用交易所凭证初始化
+api = BtApi(exchange_kwargs={
+    "CRYPTOCOM___SPOT": {
+        "api_key": "your_api_key",
+        "secret": "your_secret",
+    }
+})
 
 # 获取行情数据
-ticker = feed.get_ticker("BTCUSDT")
+ticker = api.get_tick("CRYPTOCOM___SPOT", "BTCUSDT")
 print(ticker)
 ```
 
