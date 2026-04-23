@@ -213,7 +213,9 @@ class CryptoComRequestData(Feed):
         return path, params, extra_data
 
     @staticmethod
-    def _get_exchange_info_normalize_function(input_data: Any, extra_data: dict) -> tuple:
+    def _get_exchange_info_normalize_function(
+        input_data: Any, extra_data: dict
+    ) -> tuple:
         status = input_data is not None
         symbols = []
         if status and isinstance(input_data, dict):
@@ -350,7 +352,11 @@ class CryptoComRequestData(Feed):
         return klines, True
 
     def _get_trade_history(
-        self, symbol: str, count: int = 100, extra_data: dict | None = None, **kwargs: Any
+        self,
+        symbol: str,
+        count: int = 100,
+        extra_data: dict | None = None,
+        **kwargs: Any,
     ):
         request_type = "get_trade_history"
         request_symbol = self._params.get_symbol(symbol)
@@ -369,7 +375,9 @@ class CryptoComRequestData(Feed):
         return path, params, extra_data
 
     @staticmethod
-    def _get_trade_history_normalize_function(input_data: Any, extra_data: dict) -> tuple:
+    def _get_trade_history_normalize_function(
+        input_data: Any, extra_data: dict
+    ) -> tuple:
         status = input_data is not None
         if not status:
             return [], False
@@ -548,7 +556,9 @@ class CryptoComRequestData(Feed):
             return [], False
         result = input_data.get("result", {}) if isinstance(input_data, dict) else {}
         orders = result.get("data", [])
-        return [CryptoComOrder(o, symbol_name, asset_type, True) for o in orders], bool(orders)
+        return [CryptoComOrder(o, symbol_name, asset_type, True) for o in orders], bool(
+            orders
+        )
 
     def _get_account(
         self, symbol: str | None = None, extra_data: dict | None = None, **kwargs: Any

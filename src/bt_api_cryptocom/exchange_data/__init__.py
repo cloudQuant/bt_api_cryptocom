@@ -79,7 +79,12 @@ class CryptoComExchangeDataSpot(CryptoComExchangeData):
                 "intervalNum": 1,
                 "limit": 100,
             },
-            {"rateLimitType": "ORDERS", "interval": "SECOND", "intervalNum": 1, "limit": 15},
+            {
+                "rateLimitType": "ORDERS",
+                "interval": "SECOND",
+                "intervalNum": 1,
+                "limit": 15,
+            },
             {
                 "rateLimitType": "REQUEST_WEIGHT",
                 "interval": "MINUTE",

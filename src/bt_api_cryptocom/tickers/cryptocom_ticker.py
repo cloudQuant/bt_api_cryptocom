@@ -21,7 +21,9 @@ class CryptoComTicker(TickerData):
         self.local_update_time = time.time()
         self.symbol_name = symbol_name
         self.asset_type = asset_type
-        self.ticker_data: dict[str, Any] | None = ticker_info if has_been_json_encoded else None
+        self.ticker_data: dict[str, Any] | None = (
+            ticker_info if has_been_json_encoded else None
+        )
         self.ticker_symbol_name: str | None = None
         self.server_time: float | None = None
         self.bid_price: float | None = None

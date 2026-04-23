@@ -22,4 +22,6 @@ def register_cryptocom(registry: type[ExchangeRegistry]) -> None:
     registry.register_feed("CRYPTOCOM___SPOT", CryptoComRequestDataSpot)
     registry.register_exchange_data("CRYPTOCOM___SPOT", CryptoComExchangeDataSpot)
     registry.register_balance_handler("CRYPTOCOM___SPOT", _cryptocom_balance_handler)
-    registry.register_stream("CRYPTOCOM___SPOT", "subscribe", _cryptocom_spot_subscribe_handler)
+    registry.register_stream(
+        "CRYPTOCOM___SPOT", "subscribe", _cryptocom_spot_subscribe_handler
+    )
