@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from unittest.mock import AsyncMock, MagicMock
 import pytest
 from bt_api_base.containers.requestdatas.request_data import RequestData
@@ -5,6 +6,7 @@ from bt_api_cryptocom.feeds.live_cryptocom.request_base import CryptoComRequestD
 
 
 def test_cryptocom_request_allows_missing_extra_data(monkeypatch) -> None:
+    """test_cryptocom_request_allows_missing_extra_data function"""
     request_data = CryptoComRequestData(
         public_key="public-key",
         private_key="secret-key",
@@ -25,6 +27,7 @@ def test_cryptocom_request_allows_missing_extra_data(monkeypatch) -> None:
 
 
 def test_cryptocom_disconnect_closes_http_client() -> None:
+    """test_cryptocom_disconnect_closes_http_client function"""
     request_data = CryptoComRequestData(
         public_key="public-key",
         private_key="secret-key",
@@ -38,6 +41,7 @@ def test_cryptocom_disconnect_closes_http_client() -> None:
 
 
 async def test_cryptocom_async_request_uses_initialized_http_client(monkeypatch) -> None:
+    """test_cryptocom_async_request_uses_initialized_http_client function"""
     request_data = CryptoComRequestData(
         public_key="public-key",
         private_key="secret-key",
@@ -62,6 +66,7 @@ async def test_cryptocom_async_request_uses_initialized_http_client(monkeypatch)
 
 
 async def test_cryptocom_async_request_passes_signed_payload_via_json_data(monkeypatch) -> None:
+    """test_cryptocom_async_request_passes_signed_payload_via_json_data function"""
     request_data = CryptoComRequestData(
         public_key="public-key",
         private_key="secret-key",

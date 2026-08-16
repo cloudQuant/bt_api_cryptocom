@@ -1,10 +1,13 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 from bt_api_base.containers.exchanges.exchange_data import ExchangeData
 
 
 class CryptoComExchangeData(ExchangeData):
+    """Class CryptoComExchangeData"""
     def __init__(self) -> None:
+        """__init__ method"""
         super().__init__()
         self.exchange_name = "CRYPTOCOM"
         self.rest_url = "https://api.crypto.com/exchange/v1"
@@ -31,19 +34,24 @@ class CryptoComExchangeData(ExchangeData):
         self.legal_currency = ["USDT", "USD", "BTC", "ETH", "CRO"]
 
     def get_symbol(self, symbol: str) -> str:
+        """get_symbol method"""
         return symbol.replace("/", "_").replace("-", "_")
 
     def get_period(self, key: str) -> str:
+        """get_period method"""
         return key
 
     def get_rest_path(self, key: str, **kwargs) -> str:
+        """get_rest_path method"""
         if key not in self.rest_paths or self.rest_paths[key] == "":
             raise ValueError(f"Unknown REST path key: {key}")
         return self.rest_paths[key]
 
 
 class CryptoComExchangeDataSpot(CryptoComExchangeData):
+    """Class CryptoComExchangeDataSpot"""
     def __init__(self) -> None:
+        """__init__ method"""
         super().__init__()
         self.asset_type = "SPOT"
         self.exchange_name = "CRYPTOCOM___SPOT"
@@ -92,15 +100,19 @@ class CryptoComExchangeDataSpot(CryptoComExchangeData):
         self.timezone = "UTC"
 
     def get_symbol_path(self, symbol: str) -> str:
+        """get_symbol_path method"""
         return symbol.replace("/", "_")
 
     def get_instrument_name(self, symbol: str) -> str:
+        """get_instrument_name method"""
         return symbol.replace("/", "_")
 
     def get_symbol_from_instrument(self, instrument_name: str) -> str:
+        """get_symbol_from_instrument method"""
         return instrument_name.replace("_", "/")
 
     def validate_symbol(self, symbol: str) -> bool:
+        """validate_symbol method"""
         if not symbol:
             return False
         if "/" in symbol:
@@ -115,11 +127,14 @@ class CryptoComExchangeDataSpot(CryptoComExchangeData):
         return True
 
     def get_depth_levels(self, depth: int = 50) -> int:
+        """get_depth_levels method"""
         return min(max(1, depth), 50)
 
     def get_kline_period(self, period: str) -> str:
+        """get_kline_period method"""
         return self.kline_periods.get(period, period)
 
     def get_period_from_kline(self, kline_period: str) -> str:
+        """get_period_from_kline method"""
         reverse_map = {v: k for k, v in self.kline_periods.items()}
         return reverse_map.get(kline_period, kline_period)

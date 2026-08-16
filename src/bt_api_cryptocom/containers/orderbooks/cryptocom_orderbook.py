@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -8,6 +9,7 @@ from bt_api_base.containers.orderbooks.orderbook import OrderBookData
 
 
 class CryptoComOrderBook(OrderBookData):
+    """Class CryptoComOrderBook"""
     def __init__(
         self,
         order_book_info: Any,
@@ -15,6 +17,7 @@ class CryptoComOrderBook(OrderBookData):
         asset_type: str = "SPOT",
         has_been_json_encoded: bool = False,
     ) -> None:
+        """__init__ method"""
         super().__init__(order_book_info, has_been_json_encoded)
         self.exchange_name = "CRYPTOCOM"
         self.local_update_time = time.time()
@@ -33,6 +36,7 @@ class CryptoComOrderBook(OrderBookData):
         self.has_been_init_data = False
 
     def init_data(self) -> CryptoComOrderBook:
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.order_book_data = (
                 json.loads(self.order_book_info)
@@ -65,6 +69,7 @@ class CryptoComOrderBook(OrderBookData):
         return self
 
     def get_all_data(self) -> dict[str, Any]:
+        """get_all_data method"""
         if self.all_data is None:
             self.all_data = {
                 "exchange_name": self.exchange_name,
@@ -89,42 +94,55 @@ class CryptoComOrderBook(OrderBookData):
         return self.__str__()
 
     def get_exchange_name(self) -> str:
+        """get_exchange_name method"""
         return self.exchange_name
 
     def get_local_update_time(self) -> float:
+        """get_local_update_time method"""
         return self.local_update_time
 
     def get_symbol_name(self) -> str:
+        """get_symbol_name method"""
         return self.symbol_name
 
     def get_order_book_symbol_name(self) -> str | None:
+        """get_order_book_symbol_name method"""
         return self.order_book_symbol_name
 
     def get_asset_type(self) -> str:
+        """get_asset_type method"""
         return self.asset_type
 
     def get_server_time(self) -> float | None:
+        """get_server_time method"""
         return self.server_time
 
     def get_bid_price_list(self) -> list[float] | None:
+        """get_bid_price_list method"""
         return self.bid_price_list
 
     def get_ask_price_list(self) -> list[float] | None:
+        """get_ask_price_list method"""
         return self.ask_price_list
 
     def get_bid_volume_list(self) -> list[float] | None:
+        """get_bid_volume_list method"""
         return self.bid_volume_list
 
     def get_ask_volume_list(self) -> list[float] | None:
+        """get_ask_volume_list method"""
         return self.ask_volume_list
 
     def get_bid_trade_nums(self) -> list[int]:
+        """get_bid_trade_nums method"""
         return [int(b[2]) if len(b) > 2 else 0 for b in self.bids]
 
     def get_ask_trade_nums(self) -> list[int]:
+        """get_ask_trade_nums method"""
         return [int(a[2]) if len(a) > 2 else 0 for a in self.asks]
 
     def get_price_levels(self, side: str, levels: int = 10) -> list[list[float | int]]:
+        """get_price_levels method"""
         if side.upper() == "ASK":
             return self.asks[:levels]
         elif side.upper() == "BID":

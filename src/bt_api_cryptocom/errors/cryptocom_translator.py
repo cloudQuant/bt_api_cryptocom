@@ -1,7 +1,9 @@
+"""Module-level docstring."""
 from bt_api_base.error import ErrorTranslator, UnifiedError, UnifiedErrorCode
 
 
 class CryptoComErrorTranslator(ErrorTranslator):
+    """Class CryptoComErrorTranslator"""
     ERROR_MAP = {
         0: (None, "Success"),
         10001: (UnifiedErrorCode.INTERNAL_ERROR, "System error"),
@@ -32,6 +34,7 @@ class CryptoComErrorTranslator(ErrorTranslator):
 
     @classmethod
     def translate(cls, raw_error: dict, venue: str) -> UnifiedError | None:
+        """translate method"""
         error = raw_error.get("error", raw_error)
         code = error.get("code")
         msg = error.get("message", error.get("description", ""))

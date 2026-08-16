@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from bt_api_cryptocom.containers.orderbooks.cryptocom_orderbook import (
     CryptoComOrderBook,
 )

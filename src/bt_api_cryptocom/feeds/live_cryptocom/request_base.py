@@ -1,3 +1,4 @@
+"""Module documentation"""
 from __future__ import annotations
 
 import hashlib
@@ -20,6 +21,7 @@ from bt_api_cryptocom.tickers import CryptoComTicker
 
 
 class CryptoComRequestData(Feed):
+    """Class CryptoComRequestData"""
     @classmethod
     def _capabilities(cls) -> set[Capability]:
         return {
@@ -38,6 +40,7 @@ class CryptoComRequestData(Feed):
         }
 
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         super().__init__(data_queue, **kwargs)
         self.data_queue = data_queue
         self.api_key = kwargs.get("public_key") or kwargs.get("api_key")
@@ -64,6 +67,7 @@ class CryptoComRequestData(Feed):
         return "".join(parts)
 
     def sign(self, api_method: str, params: dict, req_id: int, nonce: int) -> str:
+        """sign method"""
         param_string = self._build_param_string(params)
         sign_str = f"{api_method}{req_id}{self.api_key}{param_string}{nonce}"
         return hmac.new(
@@ -73,10 +77,10 @@ class CryptoComRequestData(Feed):
         ).hexdigest()
 
     def push_data_to_queue(self, data: Any) -> None:
+        """push_data_to_queue method"""
         if self.data_queue is not None:
             self.data_queue.put(data)
-        else:
-            raise QueueNotInitializedError("data_queue not initialized")
+        else: raise QueueNotInitializedError("data_queue not initialized")
 
     def request(
         self,
@@ -87,6 +91,7 @@ class CryptoComRequestData(Feed):
         timeout: int = 10,
         is_sign: bool = False,
     ) -> RequestData:
+        """request method"""
         if params is None:
             params = {}
         if extra_data is None:
@@ -128,6 +133,7 @@ class CryptoComRequestData(Feed):
         timeout: int = 10,
         is_sign: bool = False,
     ) -> RequestData:
+        """async_request method"""
         if params is None:
             params = {}
         if extra_data is None:
@@ -167,6 +173,7 @@ class CryptoComRequestData(Feed):
         return RequestData(res, extra_data)
 
     def async_callback(self, request_data: RequestData) -> None:
+        """async_callback method"""
         if request_data is not None:
             self.push_data_to_queue(request_data)
 

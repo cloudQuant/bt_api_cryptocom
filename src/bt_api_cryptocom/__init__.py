@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 __version__ = "0.1.0"
 
 from bt_api_cryptocom.containers.orderbooks import CryptoComOrderBook

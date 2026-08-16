@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 from typing import Any
@@ -19,6 +20,7 @@ def _cryptocom_spot_subscribe_handler(
 
 
 def register_cryptocom(registry: type[ExchangeRegistry]) -> None:
+    """register_cryptocom function"""
     registry.register_feed("CRYPTOCOM___SPOT", CryptoComRequestDataSpot)
     registry.register_exchange_data("CRYPTOCOM___SPOT", CryptoComExchangeDataSpot)
     registry.register_balance_handler("CRYPTOCOM___SPOT", _cryptocom_balance_handler)
