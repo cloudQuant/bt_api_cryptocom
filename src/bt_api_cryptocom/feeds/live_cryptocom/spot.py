@@ -23,14 +23,20 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
 
     def get_server_time(self, extra_data=None, **kwargs):
         """get_server_time method"""
-        path, params, extra_data = self._get_server_time(extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_server_time(
+            extra_data=extra_data, **kwargs
+        )
         return self.request(path, params=params, extra_data=extra_data, is_sign=False)
 
     def async_get_server_time(self, extra_data=None, **kwargs):
         """async_get_server_time method"""
-        path, params, extra_data = self._get_server_time(extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_server_time(
+            extra_data=extra_data, **kwargs
+        )
         self.submit(
-            self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
+            self.async_request(
+                path, params=params, extra_data=extra_data, is_sign=False
+            ),
             self.async_callback,
         )
 
@@ -47,20 +53,28 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
             symbol=symbol, extra_data=extra_data, **kwargs
         )
         self.submit(
-            self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
+            self.async_request(
+                path, params=params, extra_data=extra_data, is_sign=False
+            ),
             self.async_callback,
         )
 
     def get_tick(self, symbol, extra_data=None, **kwargs):
         """get_tick method"""
-        path, params, extra_data = self._get_tick(symbol, extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_tick(
+            symbol, extra_data=extra_data, **kwargs
+        )
         return self.request(path, params=params, extra_data=extra_data, is_sign=False)
 
     def async_get_tick(self, symbol, extra_data=None, **kwargs):
         """async_get_tick method"""
-        path, params, extra_data = self._get_tick(symbol, extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_tick(
+            symbol, extra_data=extra_data, **kwargs
+        )
         self.submit(
-            self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
+            self.async_request(
+                path, params=params, extra_data=extra_data, is_sign=False
+            ),
             self.async_callback,
         )
 
@@ -81,7 +95,9 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
             symbol, size=count, extra_data=extra_data, **kwargs
         )
         self.submit(
-            self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
+            self.async_request(
+                path, params=params, extra_data=extra_data, is_sign=False
+            ),
             self.async_callback,
         )
 
@@ -92,13 +108,17 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
         )
         return self.request(path, params=params, extra_data=extra_data, is_sign=False)
 
-    def async_get_kline(self, symbol, period="1m", count=100, extra_data=None, **kwargs):
+    def async_get_kline(
+        self, symbol, period="1m", count=100, extra_data=None, **kwargs
+    ):
         """async_get_kline method"""
         path, params, extra_data = self._get_kline(
             symbol, period=period, count=count, extra_data=extra_data, **kwargs
         )
         self.submit(
-            self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
+            self.async_request(
+                path, params=params, extra_data=extra_data, is_sign=False
+            ),
             self.async_callback,
         )
 
@@ -115,7 +135,9 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
             symbol, count=count, extra_data=extra_data, **kwargs
         )
         self.submit(
-            self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
+            self.async_request(
+                path, params=params, extra_data=extra_data, is_sign=False
+            ),
             self.async_callback,
         )
 
@@ -175,7 +197,12 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
         )
 
     def cancel_order(
-        self, symbol=None, order_id=None, client_order_id=None, extra_data=None, **kwargs
+        self,
+        symbol=None,
+        order_id=None,
+        client_order_id=None,
+        extra_data=None,
+        **kwargs,
     ):
         """cancel_order method"""
         path, params, extra_data = self._cancel_order(
@@ -188,7 +215,12 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
         return self.request(path, body=params, extra_data=extra_data, is_sign=True)
 
     def async_cancel_order(
-        self, symbol=None, order_id=None, client_order_id=None, extra_data=None, **kwargs
+        self,
+        symbol=None,
+        order_id=None,
+        client_order_id=None,
+        extra_data=None,
+        **kwargs,
     ):
         """async_cancel_order method"""
         path, params, extra_data = self._cancel_order(
@@ -239,12 +271,16 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
 
     def get_account(self, symbol=None, extra_data=None, **kwargs):
         """get_account method"""
-        path, params, extra_data = self._get_account(symbol=symbol, extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_account(
+            symbol=symbol, extra_data=extra_data, **kwargs
+        )
         return self.request(path, body=params, extra_data=extra_data, is_sign=True)
 
     def async_get_account(self, symbol=None, extra_data=None, **kwargs):
         """async_get_account method"""
-        path, params, extra_data = self._get_account(symbol=symbol, extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_account(
+            symbol=symbol, extra_data=extra_data, **kwargs
+        )
         self.submit(
             self.async_request(path, body=params, extra_data=extra_data, is_sign=True),
             self.async_callback,
@@ -252,12 +288,16 @@ class CryptoComRequestDataSpot(CryptoComRequestData):
 
     def get_balance(self, symbol=None, extra_data=None, **kwargs):
         """get_balance method"""
-        path, params, extra_data = self._get_balance(symbol=symbol, extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_balance(
+            symbol=symbol, extra_data=extra_data, **kwargs
+        )
         return self.request(path, body=params, extra_data=extra_data, is_sign=True)
 
     def async_get_balance(self, symbol=None, extra_data=None, **kwargs):
         """async_get_balance method"""
-        path, params, extra_data = self._get_balance(symbol=symbol, extra_data=extra_data, **kwargs)
+        path, params, extra_data = self._get_balance(
+            symbol=symbol, extra_data=extra_data, **kwargs
+        )
         self.submit(
             self.async_request(path, body=params, extra_data=extra_data, is_sign=True),
             self.async_callback,
