@@ -32,3 +32,6 @@ ignore = ["E501"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["bt_api_cryptocom"]
+
+[project.entry-points."bt_api.plugins"]
+cryptocom = "bt_api_cryptocom.plugin:register_plugin"
